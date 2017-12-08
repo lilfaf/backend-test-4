@@ -3,6 +3,12 @@
 # Check https://circleci.com/docs/2.0/language-ruby/ for more details
 #
 version: 2
+
+general:
+  branches:
+    only:
+      - job/my_answers
+
 jobs:
   build:
     docker:
