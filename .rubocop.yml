@@ -1,0 +1,16 @@
+Rails:
+  Enabled: true
+
+Documentation:
+  Enabled: false
+
+LineLength:
+  Max: 120
+
+FrozenStringLiteralComment:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - bin/*
+    - db/schema.rb
