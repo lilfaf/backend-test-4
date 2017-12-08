@@ -13,8 +13,15 @@
 ActiveRecord::Schema.define(version: 20170719183956) do
 
   create_table "calls", force: :cascade do |t|
+    t.string "sid", null: false
+    t.string "from", null: false
+    t.string "to", null: false
+    t.integer "status", default: 0, null: false
+    t.integer "duration"
+    t.string "direction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["sid"], name: "index_calls_on_sid"
   end
 
 end
