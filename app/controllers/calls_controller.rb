@@ -33,13 +33,26 @@ class CallsController < ApplicationController
     render xml: xml
   end
 
-  def voicemail; end
+  def voicemail
+    # Persist recording informations
+    attributes = call_params.slice(:recording_url, :recording_duration)
+    call.update_attributes(attributes)
+  end
 
-  def status; end
+  def status
+    # Transition status to completed and set duration
+    call.complete(call_params)
+  end
 
-  def error; end
+  def error
+    logger.error("Call #{call.sid} failed !")
+  end
 
   private
+
+  def call
+    @call ||= Call.find_by!(sid: call_params[:call_sid])
+  end
 
   def call_params
     @call_params ||= params.permit!.to_h.transform_keys do |key|

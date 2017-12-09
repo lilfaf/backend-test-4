@@ -9,6 +9,10 @@ class CallTest < ActiveSupport::TestCase
   should have_db_column(:status).with_options(null: false)
   should have_db_column(:duration)
   should have_db_column(:direction)
+  should have_db_column(:recording_url)
+  should have_db_column(:recording_duration)
+  should have_db_column(:completed_at)
+
   should have_db_index(:sid)
 
   ### Validations
@@ -28,7 +32,7 @@ class CallTest < ActiveSupport::TestCase
 
     # 2 - Returns new call
     params = {
-      call_sid: '456',
+      call_sid: '789',
       from: '+33666666666',
       to: '+33999999999'
     }

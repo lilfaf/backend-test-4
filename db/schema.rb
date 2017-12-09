@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 20170719183956) do
     t.integer "status", default: 0, null: false
     t.integer "duration"
     t.string "direction"
+    t.string "recording_url"
+    t.integer "recording_duration"
+    t.datetime "completed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sid"], name: "index_calls_on_sid"

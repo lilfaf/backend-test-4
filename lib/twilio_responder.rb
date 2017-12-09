@@ -1,7 +1,7 @@
 class TwilioResponder
   attr_accessor :language
 
-  MY_PHONE_NUMBER = '+33619252256'.freeze
+  MY_PHONE_NUMBER = '+33676667241'.freeze
 
   def self.response(name)
     TwilioResponder.new.send(name.to_sym).to_s

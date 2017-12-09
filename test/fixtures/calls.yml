@@ -4,10 +4,10 @@ one:
   sid: 123
   from: +33333333333
   to: +33666666666
-  status: ringing
+  status: 0
 
 two: 
-  sid: 123
+  sid: 456
   from: +33333333333
   to: +33666666666
-  status: in-progress
+  status: 1

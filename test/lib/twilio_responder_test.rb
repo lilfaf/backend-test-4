@@ -23,7 +23,7 @@ class TwilioResponderTest < ActiveSupport::TestCase
   test 'should returns forward response' do
     response = TwilioResponder.response(:forward)
     assert_includes response, I18n.t('twilio.responses.forwarding')
-    assert_includes response, '<Number statusCallback="http://example.com/calls/status">+33619252256</Number>'
+    assert_includes response, '<Number statusCallback="http://example.com/calls/status">+33676667241</Number>'
   end
 
   test 'should returns leave_voicemail response' do

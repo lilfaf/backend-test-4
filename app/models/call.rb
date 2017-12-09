@@ -15,6 +15,12 @@ class Call < ApplicationRecord
 
     event :complete do
       transitions from: :in_progress, to: :completed
+      after do |params|
+        update_attributes(
+          duration: params[:call_duration],
+          completed_at: Time.zone.now
+        )
+      end
     end
   end
 
