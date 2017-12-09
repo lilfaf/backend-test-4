@@ -10,7 +10,7 @@ class CallsControllerTest < ActionDispatch::IntegrationTest
 
   test '#webhook' do
     post webhook_calls_url
-    assert_response :no_content
+    assert_response :success
   end
 
   test '#voicemail' do
