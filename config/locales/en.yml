@@ -5,3 +5,4 @@ en:
       instructions: To be redirected to your contact, type 1. To leave him a voice message, type 2.
       forwarding: Your call is being forwarded to your contact.
       leave_voicemail: Please leave your message after the beep.
+      misunderstood: I did not understand your answer.

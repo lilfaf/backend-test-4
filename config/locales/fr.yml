@@ -5,3 +5,4 @@ fr:
       instructions: Pour contacter votre interlocuteur, tapez 1. Pour lui laisser un message vocal, tapez 2.
       forwarding: Vous allez être mis en relation avec votre interlocuteur.
       leave_voicemail: Merci de laisser votre message après le bip sonore.
+      misunderstood:  Je n'ai pas compris votre réponse.
