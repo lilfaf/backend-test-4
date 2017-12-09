@@ -1,0 +1,5 @@
+<h1>Calls index</h1>
+
+<% @calls.each do |call |%>
+  <p>FROM <%= call.from %> => TO: <%= call.to %></p>
+<% end %>

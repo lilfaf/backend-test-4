@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :calls, only: :index do
+    collection do
+      post :webhook
+      post :status
+      post :error
+      post :voicemail
+    end
+  end
+
+  root to: 'calls#index'
 end
