@@ -2,4 +2,5 @@
 
 <% @calls.each do |call |%>
   <p>FROM <%= call.from %> => TO: <%= call.to %></p>
+  <%= audio_tag(call.recording_url, controls: true) if call.recording_url%>
 <% end %>

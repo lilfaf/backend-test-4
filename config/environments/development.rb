@@ -27,7 +27,7 @@ Rails.application.configure do
   end
 
   config.after_initialize do
-    Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+    Rails.application.routes.default_url_options[:host] = 'https://9729f093.ngrok.io'
   end
 
   # Don't care if the mailer can't send.

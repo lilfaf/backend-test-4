@@ -8,6 +8,7 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
     setup do
+      I18n.locale = :en
       Rails.application.routes.default_url_options[:host] = 'example.com'
     end
   end

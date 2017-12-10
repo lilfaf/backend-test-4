@@ -2,11 +2,15 @@ require 'twilio_responder'
 
 class CallsController < ApplicationController
   skip_before_action :verify_authenticity_token, except: :index
+  around_action :set_locale, only: :webhook
 
   def index
     @calls = Call.all
   end
 
+  # POST /webhook
+  # Main endpoint that handles calls flow
+  #
   def webhook
     # Loads or create call
     call = Call.from_twilio(call_params)
@@ -33,17 +37,24 @@ class CallsController < ApplicationController
     render xml: xml
   end
 
+  # POST /voicemail
+  # Persist recording informations
+  #
   def voicemail
-    # Persist recording informations
     attributes = call_params.slice(:recording_url, :recording_duration)
     call.update_attributes(attributes)
   end
 
+  # POST /status
+  # Transition status to completed and set duration
+  #
   def status
-    # Transition status to completed and set duration
     call.complete(call_params)
   end
 
+  # POST /error
+  # Called when error ocurred on twilio
+  #
   def error
     logger.error("Call #{call.sid} failed !")
   end
@@ -54,9 +65,18 @@ class CallsController < ApplicationController
     @call ||= Call.find_by!(sid: call_params[:call_sid])
   end
 
+  # Permits params and converts camel cased keys to underscored symbols
   def call_params
     @call_params ||= params.permit!.to_h.transform_keys do |key|
       key.underscore.to_sym
+    end
+  end
+
+  # Set locale based on caller country or fallback to english
+  def set_locale
+    country = call_params[:caller_country]&.downcase&.to_sym
+    I18n.with_locale(country || I18n.default_locale) do
+      yield if block_given?
     end
   end
 end
